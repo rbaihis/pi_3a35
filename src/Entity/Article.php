@@ -96,7 +96,9 @@ class Article
 
         return $this;
     }
-
+    public function __toString() {
+        return $this->sujet;
+    }
     public function getUser(): ?User
     {
         return $this->user;
