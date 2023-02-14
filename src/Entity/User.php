@@ -33,6 +33,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Speciality = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Licence = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $location = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $phoneNumber = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -130,6 +145,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getSpeciality(): ?string
+    {
+        return $this->Speciality;
+    }
+
+    public function setSpeciality(?string $Speciality): self
+    {
+        $this->Speciality = $Speciality;
+
+        return $this;
+    }
+
+    public function getLicence(): ?string
+    {
+        return $this->Licence;
+    }
+
+    public function setLicence(?string $Licence): self
+    {
+        $this->Licence = $Licence;
+
+        return $this;
+    }
+
+    public function getLocation(): ?string
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?string $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
