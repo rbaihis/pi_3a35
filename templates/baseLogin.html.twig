@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+
         <title>
         {% block title %}DASHMIN - Bootstrap Admin Template{% endblock %}
         </title>
@@ -10,6 +11,7 @@
         <meta content="" name="description">
         <!-- Favicon -->
         <link href="{{ asset('img/favicon.ico') }}" rel="icon">
+
         {% block stylesheets %}
             <!-- Icon Font Stylesheet -->
             <link href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css')}}" rel="stylesheet">
@@ -40,9 +42,14 @@
             <!-- Template Javascript -->
             <script src="{{ asset('back/js/main.js') }}"></script>
         {% endblock %}
+
     </head>
 <body>
+{% block header %}
+
+{% endblock %}
     <div class="container-xxl position-relative bg-white d-flex p-0">
+
         <!-- Sign Up Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
