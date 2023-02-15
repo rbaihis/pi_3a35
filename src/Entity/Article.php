@@ -98,6 +98,7 @@ class Article
     }
     public function __toString() {
         return $this->sujet;
+
     }
     public function getUser(): ?User
     {

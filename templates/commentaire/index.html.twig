@@ -1,4 +1,4 @@
-{% extends 'front.html.twig' %}
+{% extends 'articleDetails.html.twig' %}
 
 {% block title %}Commentaire index{% endblock %}
 
@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Contenu</th>
                 <th>article</th> 
+                <th>article contenu</th>                
                 <th>user</th>
                 <th>CreatedAt</th>
                 <th>actions</th>
@@ -22,6 +23,7 @@
                 <td>{{ commentaire.id }}</td>
                 <td>{{ commentaire.contenu }}</td>
                 <td>{{ commentaire.article }}</td>
+                <td>{{ commentaire.article.contenu }}</td>
                 <td>{{ commentaire.user }}</td>
                 <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

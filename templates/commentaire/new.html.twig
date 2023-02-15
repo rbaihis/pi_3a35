@@ -1,4 +1,4 @@
-{% extends 'front.html.twig' %}
+{% extends 'articleDetails.html.twig' %}
 
 {% block title %}New Commentaire{% endblock %}
 
@@ -7,5 +7,4 @@
 
     {{ include('commentaire/_form.html.twig') }}
 
-    <a href="{{ path('app_commentaire_index') }}">back to list</a>
 {% endblock %}

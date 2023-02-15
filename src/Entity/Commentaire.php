@@ -75,6 +75,7 @@ class Commentaire
     {
         return $this->user;
     }
+    
 
     public function setUser(?User $user): self
     {
@@ -82,4 +83,5 @@ class Commentaire
 
         return $this;
     }
+
 }

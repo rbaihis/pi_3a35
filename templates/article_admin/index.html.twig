@@ -12,6 +12,7 @@
                 <th>Sujet</th>
                 <th>Contenu</th>
                 <th>Image</th>
+                {#<th>Comments</th>#}              
                 <th>CreatedBy</th>
                 <th>CreatedAt</th>               
                 <th>actions</th>
@@ -24,6 +25,7 @@
                 <td>{{ article.sujet }}</td>
                 <td>{{ article.contenu }}</td>
                 <td>{{ article.image }}</td>
+                {#<td>{{ article.Comments }}</td>#}            
                 <td>{{ article.user }}</td>                
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
