@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,17 +18,18 @@ class UserType extends AbstractType
     {
         $builder
             ->add('image', FileType::class, [
-                'label' => 'Profile Picture',
-                'required' => true,
+                'label' => 'Image',
+                'required' => false,
             ])
             ->add('location', TextType::class, [
                 'label' => 'Location',
-                'constraints' => [new NotBlank(['message' => 'Location cannot be blank'])],
             ])
-            ->add('phoneNumber')
-        ;
-           // ->add('roles')
-           // ->add('isVerified')
+            ->add('phone_number', TelType::class, [
+                'label' => 'Phone number',
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Save',
+            ]);
 
     }
 

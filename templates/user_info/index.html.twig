@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<title>User index</title>
+
+{% block body %}
+    <h1>User index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>IsVerified</th>
+                <th>Image</th>
+                <th>Speciality</th>
+                <th>Licence</th>
+                <th>Location</th>
+                <th>PhoneNumber</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+
+    </table>
+
+    <a href="{{ path('app_user_info_new') }}">Create new</a>
+{% endblock %}
