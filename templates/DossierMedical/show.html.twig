@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<title>DossierMedical</title>
+
+{% block body %}
+    <h1>DossierMedical</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ DossierMedical.id }}</td>
+            </tr>
+            <tr>  
+              <th>firtName</th>
+              <td>{{ DossierMedical.firtName }}</td>
+            </tr>
+            <tr>
+             <th>lastName</th>
+             <td>{{ DossierMedical.lastName }}</td>
+            </tr>
+             <tr>
+                <th>email</th>
+                <td>{{ DossierMedical.email }}</td>
+            </tr>
+            <tr>
+                <th>Analyses</th>
+                <td>{{ DossierMedical.Analyses }}</td>
+            </tr>
+            <tr>
+                <th>Maladies</th>
+                <td>{{ DossierMedical.Maladies }}</td>
+            </tr>
+            <tr>
+                <th>vaccins</th>
+                <td>{{ DossierMedical.vaccins }}</td>
+            </tr>
+            <tr>
+                <th>date_naissance</th>
+                <td>{{ DossierMedical.date_naissance }}</td>
+            </tr>
+            <tr>
+                <th>intervention_chirurgicale</th>
+                <td>{{ DossierMedical.intervention_chirurgicale}}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_DossierMedical_index') }}">back to list</a>
+
+    <a href="{{ path('app_DossierMedical_edit', {'id': DossierMedical.id}) }}">edit</a>
+
+    {{ include('DossierMedical/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'baseback.html.twig' %}
+{% block title %} backindex {% endblock %}
+
+
+{% block body %}
+    <h1>backindex</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                 <th>id</th>
+                <th>speciality</th>
+                <th>date</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>traitements</th>
+                <th>Raison</th>
+                <th>recommendation</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for consultation in consultations %}
+            <tr>
+               
+                <td>
+                <td>{{ consultation.id }}</td>
+                <td>{{ consultation.firstName }}</td>
+                <td>{{ consultation.lastName }}</td>
+                <td>{{ consultation.date }}</td>
+                <td>{{ consultation.traitements }}</td>
+                <td>{{ consultation.Raison}}</td>
+                <td>{{ consultation.recommendation }}</td>
+                <td>
+                    <a href="{{ path('app_consultation_show', {'id': consultation.id}) }}">show</a>
+                    <a href="{{ path('app_consultation_edit', {'id': consultation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_consultation_new') }}">Create new</a>
+{% endblock %}

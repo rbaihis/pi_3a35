@@ -1,0 +1,46 @@
+{% extends 'basefront.html.twig' %}
+ {% block title %} frontindex {% endblock %}
+
+{% block body %}
+    <h1>frontindex</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>firtName</th>
+                <th>lastName</th>
+                <th>email</th>
+                <th>Analyses</th>
+                <th>Maladies</th>
+                <th>vaccins</th>
+                <th>date_naissance</th>
+                <th>interventionChirurgicale</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for DossierMedical in DossierMedicals %}
+            <tr>
+                <td>{{ DossierMedical.id }}</td>
+                <td>{{ DossierMedical.firtName }}</td>
+                <td>{{ DossierMedical.lastName }}</td>
+                <td>{{ DossierMedical.email }}</td>
+                <td>{{ DossierMedical.Analyses }}</td>
+                <td>{{ DossierMedical.Maladies}}</td>
+                <td>{{ DossierMedical.vaccins }}</td>
+                <td>{{ DossierMedical.interventionChirurgicale }}</td>
+                <td>
+                    <a href="{{ path('app_DossierMedical_show', {'id': DossierMedical.id}) }}">show</a>
+                    <a href="{{ path('app_DossierMedical_edit', {'id': DossierMedical.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_DossierMedical_new') }}">Create new</a>
+{% endblock %}
