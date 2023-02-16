@@ -2,18 +2,16 @@
 
 
 {% block title %} Hello RoleRefController! {% endblock %}
-{% block header %}
 
-{% endblock %}
 
 {% block body %}
     <div>
     <h5 class="h5 container-fluid  text-lg-center  "> êtes-vous médecin ou infirmière?</h5>
     </div>
     <div class="container container-lg d-grid gap-2 ">
-<button type="submit" class="btn btn-outline-success  m-2 btn-lg center " href="{{ path('app_user_infos') }}">Utilisateur Normal</button>
-    <button type="submit" class="btn btn-outline-primary  m-2 btn-lg center " href="{{ path('app_doctor_infos') }}" >Docteur</button>
-    <button type="submit" class="btn btn-outline-info  m-2 btn-lg center" href="{{ path('app_nurse_infos') }}"> Infermier(e)</button>
+    <a href="{{ path('app_user_infos')}}"   class="btn btn-outline-success  m-2 btn-lg center" >Utilisateur Normal</a>
+    <a href="{{ path('app_doctor_infos')}}" class="btn btn-outline-primary  m-2 btn-lg center" >Docteur</a>
+    <a href="{{ path('app_nurse_infos')}}"      class="btn btn-outline-info  m-2 btn-lg center" > Infermier(e)</a>
     </div>
 
 {% endblock %}
