@@ -22,8 +22,8 @@ class Article
      * @Assert\Length(
      *      min = 5,
      *      max = 100,
-     *      minMessage = "le sujet doit étre plus que  {{ limit }} character",
-     *      maxMessage = "le sujet doit étre moins que {{ limit }} character"
+     *      minMessage = "le sujet doit étre plus que  {{ limit }} caractères",
+     *      maxMessage = "le sujet doit étre moins que {{ limit }} caractères"
      * )
      */    
     
@@ -37,8 +37,8 @@ class Article
      * @Assert\Length(
      *      min = 5,
      *      max = 9999,
-     *      minMessage = "la contenu doit étre plus que {{ limit }} character",
-     *      maxMessage = "la contenu doit étre moins que {{ limit }} character"
+     *      minMessage = "la contenu doit étre plus que {{ limit }} caractères",
+     *      maxMessage = "la contenu doit étre moins que {{ limit }} caractères"
      * )
      */
     private ?string $contenu = null;

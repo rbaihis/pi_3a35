@@ -21,8 +21,8 @@ class Commentaire
      * @Assert\Length(
      *      min = 5,
      *      max = 9999,
-     *      minMessage = "la contenu doit étre plus que {{ limit }} character",
-     *      maxMessage = "la contenu doit étre moins que {{ limit }} character"
+     *      minMessage = "la contenu doit étre plus que {{ limit }} caractères",
+     *      maxMessage = "la contenu doit étre moins que {{ limit }} caractères"
      * )
      */
     private ?string $contenu = null;
