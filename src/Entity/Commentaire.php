@@ -17,6 +17,14 @@ class Commentaire
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank (message: "le champ est vide !!")]
+      /**
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 9999,
+     *      minMessage = "la contenu doit étre plus que {{ limit }} character",
+     *      maxMessage = "la contenu doit étre moins que {{ limit }} character"
+     * )
+     */
     private ?string $contenu = null;
 
     #[ORM\Column]

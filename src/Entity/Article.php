@@ -17,12 +17,30 @@ class Article
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 20)]
     #[Assert\NotBlank (message: "le champ est vide !!")]
+    /**
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "le sujet doit étre plus que  {{ limit }} character",
+     *      maxMessage = "le sujet doit étre moins que {{ limit }} character"
+     * )
+     */    
+    
+     #[ORM\Column(length: 255)]
+
     private ?string $sujet = null;
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank (message: "le champ est vide !!")]
+      /**
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 9999,
+     *      minMessage = "la contenu doit étre plus que {{ limit }} character",
+     *      maxMessage = "la contenu doit étre moins que {{ limit }} character"
+     * )
+     */
     private ?string $contenu = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -96,6 +114,8 @@ class Article
 
         return $this;
     }
+
+    /** return the article subject to use it in the articals and comments section**/
     public function __toString() {
         return $this->sujet;
 

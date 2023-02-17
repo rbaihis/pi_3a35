@@ -44,8 +44,10 @@ class User
         $this->articles = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
     }
+    /** return the user name and lastname to use them in the articals and comments section**/
     public function __toString() {
-        return $this->firstName;
+        return $this->firstName . " " . $this->lastName;
+        ;
     }
     
     public function getId(): ?int

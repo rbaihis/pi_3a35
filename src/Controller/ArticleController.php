@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Form\CommentaireType;
+
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,19 +37,23 @@ class ArticleController extends AbstractController
         }
 
         return $this->renderForm('article/new.html.twig', [
+            
             'article' => $article,
             'form' => $form,
         ]);
     }
+    
 
     #[Route('/{id}', name: 'app_article_show', methods: ['GET'])]
     public function show(Article $article): Response
     {
+        /** return all comments **/
         $comments = $article->getComments();
         return $this->render('article/show.html.twig', [
             'article' => $article,
             'comments' => $comments
         ]);
+        
     }
 
     #[Route('/{id}/edit', name: 'app_article_edit', methods: ['GET', 'POST'])]
@@ -59,7 +65,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $articleRepository->save($article, true);
 
-            return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_article_show', ['id'=>$article->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('article/edit.html.twig', [

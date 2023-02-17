@@ -18,6 +18,9 @@ class CommentaireController extends AbstractController
     public function new(Request $request, Article $article, CommentaireRepository $commentaireRepository): Response
     {
         $commentaire = new Commentaire();
+
+        /** return id  parameter of the artical from the route **/
+        /** to add the comment to the specific artical **/
         $commentaire->setArticle($article);
         $form = $this->createForm(CommentaireType::class, $commentaire);
         $form->handleRequest($request);

@@ -6,6 +6,9 @@
     --dark: #091E3E;
 }
 
+.form_label {
+color:rgb(255, 0, 0) !important; /*you can change the color */
+}
 
 /*** Spinner ***/
 .spinner {

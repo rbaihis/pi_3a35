@@ -16,6 +16,8 @@ class ArticleType extends AbstractType
             ->add('contenu')
             ->add('image')
             ->add('user')
+
+
         ;
     }
 
