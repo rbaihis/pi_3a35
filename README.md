@@ -18,13 +18,14 @@
     - sidebarb.html.twig
 <p> <br> </p>
 
-<h4>  home routes </h4> :
+<h4>  home routes </h4> 
 <p> manipulate each component separetly  </p>
 - back_home [ @Route '/admin' ]
   - index.html.twig
+    - 
 - front_home [ @Route '/' ]
   - index.html.twig
- 
+    - 
 <h3> commonly-used-table-attributes  : </h3>
 <h4> 'user' :  </h4>
   <pre>   firstName/lastName/email/id/appointments </pre>
