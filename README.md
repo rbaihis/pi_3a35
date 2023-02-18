@@ -17,10 +17,10 @@
     - navbarb.html.twig
     - sidebarb.html.twig
     - 
-#
 
-<h4>  home routes </h4> 
-<p> manipulate each component separetly  </p>
+
+### <h4>  home routes </h4> 
+
 - back_home [ @Route '/admin' ]
   - index.html.twig
     - 
