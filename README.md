@@ -5,20 +5,21 @@
 <p> manipulate each component separetly  </p>
 
 - base.html.twig   ( default template front-office ) [ includes below files]
-  - z_base_front_structure
+  - z_base_front_structure : (folder)
     - footer_front.html.twig
     - home.html.twig
     - navbar_front.html.twig
     - topbar_fron.html.twig
 - base_b.html.twig ( default template back-office ) [ includes below files] 
-  - z_base_back_structure
+  - z_base_back_structure (folder)
     - footerb.html.twig
     - home.html.twig
     - navbarb.html.twig
     - sidebarb.html.twig
 <p> <br> </p>
 
-<h4>  home routes </h4>  : <p> manipulate each component separetly  </p>
+<h4>  home routes </h4> :
+<p> manipulate each component separetly  </p>
 - back_home [ @Route '/admin' ]
   - index.html.twig
 - front_home [ @Route '/' ]
