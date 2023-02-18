@@ -10,7 +10,7 @@
     - home.html.twig
     - navbar_front.html.twig
     - topbar_fron.html.twig
--base_b.html.twig ( default template back-office ) [ includes below files] 
+- base_b.html.twig ( default template back-office ) [ includes below files] 
   - z_base_back_structure
     - footerb.html.twig
     - home.html.twig
