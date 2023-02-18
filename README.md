@@ -16,7 +16,8 @@
     - home.html.twig
     - navbarb.html.twig
     - sidebarb.html.twig
-<p> <br> </p>
+    - 
+#
 
 <h4>  home routes </h4> 
 <p> manipulate each component separetly  </p>
