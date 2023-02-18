@@ -1,24 +1,17 @@
-{% extends 'blog.html.twig' %}
-
+{% extends 'gestion_blog/front.html.twig' %}
 {% block title %}Aidme Blog{% endblock %}
-
-{% block body %}
-
-
-    
+{% block body %}  
     <button class="btn btn-dark w-100 py-3">
-
-    <a href="{{ path('app_article_new') }}">Ajouter un nouveau Article</a></button>
-
+    <a href="{{ path('app_article_new') }}">Ajouter un nouveau Article</a>
+    </button>
     <!-- Blog Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <!-- Blog list Start -->
-
                 <div class="col-lg-8">
                     <div class="row g-5">
-                    {% for article in articles %}
+                        {% for article in articles %}
                         <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
                             <div class="blog-item bg-light rounded overflow-hidden">
                                 <div class="blog-img position-relative overflow-hidden">
@@ -30,17 +23,14 @@
                                         <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ article.createdAt ? article.createdAt|date('d-m-Y H:i:s') : '' }}</small>
                                     </div>
                                     <h4 class="mb-4">{{ article.sujet }}</h4>
-                                    <p >{{  article.contenu|length > 60 ? article.contenu|slice(0, 60) ~ '...' : article.contenu  }}</p>
+                                    <p>{{  article.contenu|length > 60 ? article.contenu|slice(0, 60) ~ '...' : article.contenu  }}</p>
                                     <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="{{ path('app_article_show', {'id': article.id}) }}">En savoir plus <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                         {% else %}
-            <tr>
-                <td colspan="6">Il y'a aucun article publié</td>
-            </tr>
-                         {% endfor %}
-                       
+                        <tr><td colspan="6">Il y'a aucun article publié</td></tr>
+                        {% endfor %}
                         <div class="col-12 wow slideInUp" data-wow-delay="0.1s">
                             <nav aria-label="Page navigation">
                               <ul class="pagination pagination-lg m-0">
@@ -62,9 +52,7 @@
                         </div>
                     </div>
                 </div>
-               
                 <!-- Blog list End -->
-    
                 <!-- Sidebar Start -->
                 <div class="col-lg-4">
                     <!-- Search Form Start -->
@@ -75,9 +63,6 @@
                         </div>
                     </div>
                     <!-- Search Form End -->
-    
-
-    
                     <!-- Recent Post Start -->
                     <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
                         <div class="section-title section-title-sm position-relative pb-3 mb-4">
@@ -98,16 +83,13 @@
                             <a href="" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">Lorem ipsum dolor sit amet adipis elit
                             </a>
                         </div>
-                        
                     </div>
                     <!-- Recent Post End -->
-    
                     <!-- Image Start -->
                     <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
                         <img src="{{asset('img/blog-1.jpg')}}" alt="" class="img-fluid rounded">
                     </div>
                     <!-- Image End -->
-    
                     <!-- Tags Start -->
                     <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
                         <div class="section-title section-title-sm position-relative pb-3 mb-4">
@@ -129,8 +111,6 @@
                         </div>
                     </div>
                     <!-- Tags End -->
-    
-                    
                 </div>
                 <!-- Sidebar End -->
             </div>

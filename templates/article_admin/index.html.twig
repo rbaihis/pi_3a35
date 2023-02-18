@@ -1,45 +1,106 @@
-{% extends 'back.html.twig' %}
+{% extends 'gestion_blog/back.html.twig' %}
 
-{% block title %}Article index{% endblock %}
+{% block title %}Aidme | Dashboard Articles{% endblock %}
 
 {% block body %}
-    <h1>Article index</h1>
 
-    <table class="table">
-        <thead>
+                   <!-- Sale & Revenue Start -->
+                   
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Nombre articles</p>
+                                <h6 class="mb-0">{{articles|length}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Articles jour</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Articles semaine</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Utilisateurs posté</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+            <!-- Recent Sales Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h4 class="mb-0">Liste Article</h4>
+                    <a href="{{ path('app_article_new1') }}">Ajouter un nouveau Article</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                        <tr class="text-dark">
+                            <th scope="col">ID</th>
+                            <th scope="col">Titre l'Article</th>
+                            <th scope="col">Contenu l'Article</th>
+                            <th scope="col">Image de l'Article</th>
+                            <th scope="col">Auteur</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                                   {% for article in articles %}
             <tr>
-                <th>Id</th>
-                <th>Sujet</th>
-                <th>Contenu</th>
-                <th>Image</th>
-                {#<th>Comments</th>#}              
-                <th>CreatedBy</th>
-                <th>CreatedAt</th>               
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
+
+
+
                 <td>{{ article.id }}</td>
                 <td>{{ article.sujet }}</td>
-                <td>{{ article.contenu }}</td>
+                <td><p >{{ article.contenu|length > 60 ? article.contenu|slice(0, 70) ~ '...' : article.contenu }}</p></td>
                 <td>{{ article.image }}</td>
-                {#<td>{{ article.Comments }}</td>#}            
                 <td>{{ article.user }}</td>                
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_article_show1', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('app_article_edit1', {'id': article.id}) }}">edit</a>
+                    
+                    <a class="btn btn-sm btn-primary" href="{{ path('app_article_show1', {'id': article.id}) }}">Détails</a>
+                    <br><br>
+ {{ include('article_admin/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">aucun article n'est disponible</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+                        </tr>
+                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Recent Sales End -->
 
-    <a href="{{ path('app_article_new1') }}">Create new</a>
+
 {% endblock %}

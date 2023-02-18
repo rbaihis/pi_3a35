@@ -1,41 +1,101 @@
-{% extends 'back.html.twig' %}
+{% extends 'gestion_blog/back.html.twig' %}
 
-{% block title %}Commentaire index{% endblock %}
+{% block title %}Aidme | Dashboard Commentaires{% endblock %}
 
 {% block body %}
-    <h1>Commentaire index</h1>
+                   <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Nombre Commentaires</p>
+                                <h6 class="mb-0">{{commentaires|length}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Commentaires cette jour</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Commentaires cette semaine</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Utilisateurs commenté</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+        <!-- Recent Sales Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h4 class="mb-0">Liste Commentaires</h4>
+                    
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                        <tr class="text-dark">
+                            <th scope="col">ID</th>
+                            <th scope="col">Sujet Article</th>
+                            <th scope="col">Contenu de commentaire</th>
+                            <th scope="col">Commentateur</th>
+                            <th scope="col">Date de commentaire</th>
+                            <th scope="col">Action</th>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Contenu</th>
-                <th>article</th> 
-                <th>user</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for commentaire in commentaires %}
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                                   {% for commentaire in commentaires %}
             <tr>
                 <td>{{ commentaire.id }}</td>
-                <td>{{ commentaire.contenu }}</td>
-                <td>{{ commentaire.article }}</td>
-                <td>{{ commentaire.user }}</td>
+
+                             <td>{{ commentaire.article.sujet }}</td>
+                <td><p >{{  commentaire.contenu|length > 60 ? commentaire.contenu|slice(0, 70) ~ '...' : commentaire.contenu  }}</p></td>             
+                                <td>{{ commentaire.user }}</td>
+
                 <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_commentaire_show1', {'id': commentaire.id}) }}">show</a>
-                    <a href="{{ path('app_commentaire_edit1', {'id': commentaire.id}) }}">edit</a>
+                    
+                    <a class="btn btn-sm btn-primary" href="{{ path('app_commentaire_show1', {'id': commentaire.id}) }}">Détails</a>
+                    <br><br>
+ {{ include('commentaire_admin/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="6">aucun commentaires n'est disponible</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+                        </tr>
+                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Recent Sales End -->
 
-    <a href="{{ path('app_commentaire_new1') }}">Create new</a>
 {% endblock %}

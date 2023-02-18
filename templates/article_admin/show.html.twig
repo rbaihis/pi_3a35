@@ -1,43 +1,58 @@
-{% extends 'back.html.twig' %}
+{% extends 'gestion_blog/backDetails.html.twig' %}
 
-{% block title %}Article{% endblock %}
+{% block title %}Aidme | Détails Articles {% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
 
-    <table class="table">
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h4 class="mb-0">Détails Article</h4>
+                    <div class="btn-group" role="group">
+                                {{ include('article_admin/_deleteshow_form.html.twig') }}
+                                <a class="btn btn-outline-primary" href="{{ path('app_article_index1') }}">Retour à la liste</a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ article.id }}</td>
             </tr>
-            <tr>
-                <th>Sujet</th>
-                <td>{{ article.sujet }}</td>
+                        <tr>
+                <th>Auteur</th>
+                <td>{{ article.user }}</td>
             </tr>
+                        </tr>
+                        <tr>
+                <th>Sujet</th>
+
+                                         <td>{{ article.sujet }}</td>
+                                                     </tr>
             <tr>
                 <th>Contenu</th>
                 <td>{{ article.contenu }}</td>
-            </tr>
+
+
             <tr>
-                <th>Image</th>
-                <td>{{ article.image }}</td>
+                <th>Date</th>
+                <td>{{ article.createdAt ? article.createdAt|date('d-m-Y à H:i:s') : '' }}</td>
+                
             </tr>
-            <tr>
-                <th>User</th>
-                <td>{{ article.user }}</td>
+
+                
+                
+
+
             </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            
         </tbody>
     </table>
+    </div>
+    </div>
+    </div>
 
-    <a href="{{ path('app_article_index1') }}">back to list</a>
 
-    <a href="{{ path('app_article_edit1', {'id': article.id}) }}">edit</a>
 
-    {{ include('article_admin/_delete_form.html.twig') }}
+
 {% endblock %}
