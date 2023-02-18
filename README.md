@@ -1,7 +1,9 @@
 # pi_3a35
 ### 'pi3a35' dataBase Name
 <p> <br> </p>
-<p> <h4>templates structure</h4>  : manipulate each component separetly  </p>
+<h4>templates structure</h4>
+<p> manipulate each component separetly  </p>
+
 - base.html.twig   ( default template front-office ) [ includes below files]
   - z_base_front_structure
     - footer_front.html.twig
@@ -15,7 +17,7 @@
     - navbarb.html.twig
     - sidebarb.html.twig
 <p> <br> </p>
-<p> <h4> home routes </h4>  : manipulate each component separetly  </p>
+<h4>  home routes </h4>  : <p> manipulate each component separetly  </p>
 - back_home [ @Route '/admin' ]
   - index.html.twig
 - front_home [ @Route '/' ]
