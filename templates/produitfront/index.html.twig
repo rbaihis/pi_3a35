@@ -1,0 +1,62 @@
+{% extends 'produit_front.html.twig' %}
+
+{% block title %}Equipements paramedicaux{% endblock %}
+
+{% block header %}
+
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Equipements paramedicaux</a>
+        <div class="dropdown-menu dropdown-menu-lg m-0">
+            {% for cat in categories %}
+                <div class="row category" data-id="{{ cat.id }}">
+                    <div class="col-9">
+                        <a href="{{ path('app_produitfront_category', {'id': cat.id}) }}" class="dropdown-item">{{ cat.nomCategorie }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+
+    <div class="container-fluid py-5 wow fadeInUp" id="products-container" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row">
+                {% for produit in produits %}
+                    <div class="product-card col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                        <div class="team-item bg-light rounded overflow-hidden">
+                            <div class="team-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" style="object-fit: cover; height: 300px; width: 300px" src="{{ asset('assets/uploads/' ~ produit.imageProduit) }}"  alt="">
+                                <div class="team-social">
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded btn-gmail" href=""><i class="far fa-envelope"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center py-4">
+                                <h4 class="text-primary">{{ produit.nomProduit }}</h4>
+                                <p class="text-uppercase m-0">{{ produit.prix ~ 'D' }}</p>
+                                <a href="{{ path('app_produitfront_fetch', {'id': produit.id} ) }}" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-md-12">
+                        <p class="text-center">No records found.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
