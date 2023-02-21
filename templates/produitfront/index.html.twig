@@ -29,7 +29,7 @@
     <div class="container-fluid py-5 wow fadeInUp" id="products-container" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row">
-                {% for produit in produits %}
+                {% for produit in pagination %}
                     <div class="product-card col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                         <div class="team-item bg-light rounded overflow-hidden">
                             <div class="team-img position-relative overflow-hidden">
@@ -53,9 +53,11 @@
                         <p class="text-center">No records found.</p>
                     </div>
                 {% endfor %}
+
             </div>
         </div>
     </div>
+    {{ knp_pagination_render(pagination, 'produit/custoom_pagination.html.twig') }}
 
 {% endblock %}
 

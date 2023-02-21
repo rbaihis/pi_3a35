@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -29,16 +30,16 @@ class ProduitType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('prix', IntegerType::class, [
+            ->add('prix', NumberType::class, [
                 'label' => 'Prix',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'price cannot be blank',
+                        'message' => 'Price cannot be blank',
                     ]),
                     new Range([
                         'min' => 0.0,
-                        'max' => 100000000.000000000,
-                        'notInRangeMessage' => 'price must be between {{ min }} and {{ max }}',
+                        'max' => 100000000.0,
+                        'notInRangeMessage' => 'Price must be between {{ min }} and {{ max }}',
                     ]),
                 ],
             ])

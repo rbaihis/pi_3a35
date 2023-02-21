@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,17 +22,24 @@ class ProduitFrontController extends AbstractController
         $this->entityManager = $entityManager;
     }
     #[Route('/produitfront', name: 'app_produitfront', methods: ['GET'])]
-    public function index(ProduitRepository $produitRepository,CategorieRepository $categorieRepository): Response
+    public function index(ProduitRepository $produitRepository,Request $request,CategorieRepository $categorieRepository,PaginatorInterface $paginator): Response
     {
-
+        $produit=$produitRepository->findAll();
         $categories = $this->entityManager->getRepository(Categorie::class)->findAll();
-
+        $pagination = $paginator->paginate(
+            $produit,
+            $request->query->getInt('page', 1), // Current page number
+            5 // Number of items per page
+        );
         return $this->render('produitfront/index.html.twig' , [
-            'produits' => $produitRepository->findAll(),
+            'produits' => $produit,
             'categories' => $categories,
+            'pagination' => $pagination,
+
 
         ]);
     }
+
 
     #[Route('/fetch/{id}', name: 'app_produitfront_fetch')]
     public function show(Produit $produit): Response

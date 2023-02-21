@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\ProduitRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +19,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProduitController extends AbstractController
 {
     #[Route('/', name: 'app_produit_index', methods: ['GET'])]
-    public function index(ProduitRepository $produitRepository): Response
+    public function index(ProduitRepository $produitRepository,Request $request, PaginatorInterface $paginator): Response
     {
+        $produit=$produitRepository->findAll();
+        $pagination = $paginator->paginate(
+            $produit,
+            $request->query->getInt('page', 1), // Current page number
+            5 // Number of items per page
+        );
+
         return $this->render('produit/index.html.twig' , [
-            'produits' => $produitRepository->findAll(),
+            'produits' => $produit,
+            'pagination' => $pagination,
 
         ]);
     }

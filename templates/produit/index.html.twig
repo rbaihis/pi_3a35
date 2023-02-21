@@ -3,7 +3,8 @@
 {% block title %}Equipements paramedicaux {% endblock %}
 
 {% block body %}
-<h1>Equipements paramedicaux</h1>
+
+    <h1>Equipements paramedicaux</h1>
 <div class="container-fluid pt-12 px-12">
     <div class="row g-12">
         <div class="col-sm-12 col-xl-12">
@@ -26,7 +27,7 @@
         </thead>
         <tbody>
 
-        {% for produit in produits %}
+        {% for produit in pagination %}
             <tr>
                 <td>{{ produit.id }}</td>
                 <td>{{ produit.nomProduit }}</td>
@@ -53,6 +54,8 @@
         {% endfor %}
         </tbody>
                 </table>
+                {{ knp_pagination_render(pagination, 'produit/custoom_pagination.html.twig') }}
+
             </div>
         </div>
 
