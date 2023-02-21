@@ -1,0 +1,39 @@
+{%extends 'baseback.html.twig'%}
+
+<!DOCTYPE html>
+
+<title>TypesServices index</title>
+
+{% block body %}
+    <h1>TypesServices index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomService</th>
+                <th>DescriptionService</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for types_service in types_services %}
+            <tr>
+                <td>{{ types_service.id }}</td>
+                <td>{{ types_service.NomService }}</td>
+                <td>{{ types_service.DescriptionService }}</td>
+                <td>
+                    <a href="{{ path('app_types_services_show', {'id': types_service.id}) }}">show</a>
+                    <a href="{{ path('app_types_services_edit', {'id': types_service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_types_services_new') }}">Create new</a>
+{% endblock %}

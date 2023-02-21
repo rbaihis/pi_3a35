@@ -1,0 +1,32 @@
+{%extends 'baseback.html.twig'%}
+
+<!DOCTYPE html>
+
+<title>TypesServices</title>
+
+{% block body %}
+    <h1>TypesServices</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ types_service.id }}</td>
+            </tr>
+            <tr>
+                <th>NomService</th>
+                <td>{{ types_service.NomService }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionService</th>
+                <td>{{ types_service.DescriptionService }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_types_services_index') }}">back to list</a>
+
+    <a href="{{ path('app_types_services_edit', {'id': types_service.id}) }}">edit</a>
+
+    {{ include('types_services/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,48 @@
+{%extends 'baseback.html.twig'%}
+<!DOCTYPE html>
+
+<title>Service index</title>
+
+{% block body %}
+    <h1>Service index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomService</th>
+                <th>NomPropriétaire</th>
+                <th>Id_type</th>
+                <th>TypeService</th>
+                <th>Prix</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <td>{{ service.id }}</td>
+                <td>{{ service.NomService }}</td>
+                <td>{{ service.NomPropriétaire }}</td>
+                <td>{{ service.idType }}</td>
+                <td>{{ service.TypeService }}</td>
+                <td>{{ service.prix }}</td>
+                <td>{{ service.DateDebut ? service.DateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ service.DateFin ? service.DateFin|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_service_show', {'id': service.id}) }}">show</a>
+                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_service_new') }}">Create new</a>
+{% endblock %}

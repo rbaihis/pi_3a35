@@ -1,0 +1,13 @@
+{%extends 'baseback.html.twig'%}
+
+<!DOCTYPE html>
+
+<title>New TypesServices</title>
+
+{% block body %}
+    <h1>Create new TypesServices</h1>
+
+    {{ include('types_services/_form.html.twig') }}
+
+    <a href="{{ path('app_types_services_index') }}">back to list</a>
+{% endblock %}
