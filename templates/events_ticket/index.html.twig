@@ -1,0 +1,49 @@
+{% extends 'base_front_event.html.twig' %}
+
+{% block title %}EventTicket index{% endblock %}
+
+{% block body %}
+    <h1>EventTicket index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Matricule_event</th>
+                <th>Image</th>
+                <th>Date_ticket</th>
+                <th>Valide_ticket</th>
+                <th>Prix_ticket</th>
+                <th>Description_ticket</th>
+                <th>Adresse</th>
+                <th>Reserve</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event_ticket in event_tickets %}
+            <tr>
+                <td>{{ event_ticket.id }}</td>
+                <td>{{ event_ticket.matriculeEvent }}</td>
+                <td>{{ event_ticket.image }}</td>
+                <td>{{ event_ticket.dateTicket ? event_ticket.dateTicket|date('Y-m-d') : '' }}</td>
+                <td>{{ event_ticket.valideTicket }}</td>
+                <td>{{ event_ticket.prixTicket }}</td>
+                <td>{{ event_ticket.descriptionTicket }}</td>
+                <td>{{ event_ticket.adresse }}</td>
+                <td>{{ event_ticket.reserve }}</td>
+                <td>
+                    <a href="{{ path('app_events_ticket_show', {'id': event_ticket.id}) }}">show</a>
+                    <a href="{{ path('app_events_ticket_edit', {'id': event_ticket.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_events_ticket_new') }}">Create new</a>
+{% endblock %}

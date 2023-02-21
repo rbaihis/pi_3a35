@@ -1,0 +1,54 @@
+{% extends 'base_back_event.html.twig' %}
+
+{% block title %}Event{% endblock %}
+
+{% block body %}
+    <h1>Event</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ event.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_event</th>
+                <td>{{ event.nomEvent }}</td>
+            </tr>
+            <tr>
+                <th>Discription_event</th>
+                <td>{{ event.discriptionEvent }}</td>
+            </tr>
+            <tr>
+                <th>Image_event</th>
+                <td>{{ event.imageEvent }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut_event</th>
+                <td>{{ event.dateDebutEvent ? event.dateDebutEvent|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin_event</th>
+                <td>{{ event.dateFinEvent ? event.dateFinEvent|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Adresse_event</th>
+                <td>{{ event.adresseEvent }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ event.status }}</td>
+            </tr>
+            <tr>
+                <th>Reserve</th>
+                <td>{{ event.reserve }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_event_index') }}">back to list</a>
+
+    <a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
+
+    {{ include('event/_delete_form.html.twig') }}
+{% endblock %}
