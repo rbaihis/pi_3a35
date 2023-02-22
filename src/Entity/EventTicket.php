@@ -15,18 +15,23 @@ class EventTicket
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $matricule_event = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $image = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?\DateTimeInterface $date_ticket = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $valide_ticket = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $prix_ticket = null;
 
     #[ORM\ManyToOne(inversedBy: 'eventTickets')]
@@ -36,9 +41,11 @@ class EventTicket
     private ?Event $eventID = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $description_ticket = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $adresse = null;
 
     #[ORM\Column(length: 255, nullable: true)]

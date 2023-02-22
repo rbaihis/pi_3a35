@@ -1,11 +1,11 @@
-{% extends 'base_front_event.html.twig' %}
+{% extends 'base_back_event1.html.twig' %}
 
 {% block title %}New EventTicket{% endblock %}
 
 {% block body %}
-    <h1>Create new EventTicket</h1>
+    <h1>Ajoute Ticket</h1>
 
     {{ include('events_ticket/_form.html.twig') }}
 
-    <a href="{{ path('app_events_ticket_index') }}">back to list</a>
+    <a href="{{ path('app_events_ticket_index') }}"class="btn btn-primary py-2 px-4 mt-4">Liste des Tickets</a>
 {% endblock %}

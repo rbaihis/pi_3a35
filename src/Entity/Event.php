@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
@@ -17,28 +18,47 @@ class Event
     private ?int $id = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $nom_event = null;
+    
+   
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $discription_event = null;
+    
+   
+
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $image_event = null;
+    
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_debut_event = null;
+    
+   
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_fin_event = null;
 
+   
+
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $adresse_event = null;
+    
+    
 
     #[ORM\OneToMany(mappedBy: 'eventID', targetEntity: EventTicket::class)]
     private Collection $eventTick;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank (message:"le champ est vide!")]
     private ?string $status = null;
+  
+   
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $reserve = null;
@@ -178,4 +198,10 @@ class Event
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->id;
+    }
+
+    
 }

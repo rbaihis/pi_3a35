@@ -1,9 +1,9 @@
-{% extends 'base_front_event.html.twig' %}
+{% extends 'base_back_event1.html.twig' %}
 
-{% block title %}EventTicket index{% endblock %}
+{% block title %}Ticket Évènement{% endblock %}
 
 {% block body %}
-    <h1>EventTicket index</h1>
+    <h1>Évènement Ticket</h1>
 
     <table class="table">
         <thead>
@@ -25,7 +25,7 @@
             <tr>
                 <td>{{ event_ticket.id }}</td>
                 <td>{{ event_ticket.matriculeEvent }}</td>
-                <td>{{ event_ticket.image }}</td>
+                <td><img src="{{ event_ticket.image }}"width="100" height="100"></td>
                 <td>{{ event_ticket.dateTicket ? event_ticket.dateTicket|date('Y-m-d') : '' }}</td>
                 <td>{{ event_ticket.valideTicket }}</td>
                 <td>{{ event_ticket.prixTicket }}</td>
@@ -33,8 +33,11 @@
                 <td>{{ event_ticket.adresse }}</td>
                 <td>{{ event_ticket.reserve }}</td>
                 <td>
-                    <a href="{{ path('app_events_ticket_show', {'id': event_ticket.id}) }}">show</a>
-                    <a href="{{ path('app_events_ticket_edit', {'id': event_ticket.id}) }}">edit</a>
+                    
+                    <a href="{{ path('app_events_ticket_edit', {'id': event_ticket.id}) }}"class="btn btn-primary py-2 px-4 mt-4">Modifier</a>
+                    {{ include('events_ticket/_delete_form.html.twig') }}
+
+                    
                 </td>
             </tr>
         {% else %}
@@ -45,5 +48,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_events_ticket_new') }}">Create new</a>
+    <a href="{{ path('app_events_ticket_new') }}"class="btn btn-primary py-2 px-4 mt-4">Ajouter Ticket</a>
 {% endblock %}

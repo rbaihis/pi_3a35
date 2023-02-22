@@ -6,6 +6,7 @@ use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class EventType extends AbstractType
 {
@@ -18,8 +19,15 @@ class EventType extends AbstractType
             ->add('date_debut_event')
             ->add('date_fin_event')
             ->add('adresse_event')
-            ->add('status')
-            ->add('reserve')
+            ->add('status',ChoiceType::class , [
+                'choices'=>[
+                    'Confirmé'=>'Confirmé',
+                    'En attente'=>'En attente',
+                    'Annulé'=>'Annulé' ],
+                'attr' => ['class' => 'form-select'],
+                'label_attr' => ['class' => 'form-label'],
+            ])
+            
         ;
     }
 

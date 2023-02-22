@@ -1,6 +1,6 @@
-{% extends 'base_back_event.html.twig' %}
+{% extends 'base_front_event.html.twig' %}
 
-{% block title %}Dashboard Évènement {% endblock %}
+{% block title %} Évènement {% endblock %}
 
 {% block body %}
 
@@ -39,9 +39,8 @@
                 <td>{{ event.status }}</td>
                 <td>{{ event.reserve }}</td>
                 <td>
+                    <a href="{{ path('app_events_ticket_new', {'id': event.id}) }}"class="btn btn-primary py-2 px-4 mt-4">Reserver</a>
                    
-                    <a href="{{ path('app_event_edit', {'id': event.id}) }}"class="btn btn-primary py-2 px-4 mt-4">Modifier</a>
-                      {{ include('event/_delete_form.html.twig') }}
 
                    
                     
@@ -58,8 +57,7 @@
     
 
 
-    <a href="{{ path('app_event_new') }}" class="btn btn-primary py-2 px-4 mt-4">Ajouter Un Évenemen</a>
-     
+    
                    
                     
                     
