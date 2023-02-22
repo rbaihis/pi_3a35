@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\TypesServices;
+use App\Entity\TypeService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<TypesServices>
+ * @extends ServiceEntityRepository<TypeService>
  *
- * @method TypesServices|null find($id, $lockMode = null, $lockVersion = null)
- * @method TypesServices|null findOneBy(array $criteria, array $orderBy = null)
- * @method TypesServices[]    findAll()
- * @method TypesServices[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method TypeService|null find($id, $lockMode = null, $lockVersion = null)
+ * @method TypeService|null findOneBy(array $criteria, array $orderBy = null)
+ * @method TypeService[]    findAll()
+ * @method TypeService[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TypesServicesRepository extends ServiceEntityRepository
+class TypeServiceRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TypesServices::class);
+        parent::__construct($registry, TypeService::class);
     }
 
-    public function save(TypesServices $entity, bool $flush = false): void
+    public function save(TypeService $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class TypesServicesRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(TypesServices $entity, bool $flush = false): void
+    public function remove(TypeService $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class TypesServicesRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return TypesServices[] Returns an array of TypesServices objects
+//     * @return TypeService[] Returns an array of TypeService objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class TypesServicesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?TypesServices
+//    public function findOneBySomeField($value): ?TypeService
 //    {
 //        return $this->createQueryBuilder('t')
 //            ->andWhere('t.exampleField = :val')

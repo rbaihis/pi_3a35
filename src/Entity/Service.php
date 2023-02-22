@@ -18,22 +18,25 @@ class Service
     private ?string $NomService = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $NomPropriétaire = null;
-
-    #[ORM\Column]
-    private ?int $id_type = null;
+    private ?string $Proprietaire = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $TypeService = null;
+    private ?string $Role = null;
 
-    #[ORM\Column]
-    private ?float $prix = null;
+    #[ORM\Column(length: 255)]
+    private ?string $id_service = null;
+
+    #[ORM\ManyToOne(inversedBy: 'services')]
+    private ?TypeService $TypeService = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '0')]
+    private ?string $prix = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $DateDebut = null;
+    private ?\DateTimeInterface $Date_Debut = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $DateFin = null;
+    private ?\DateTimeInterface $Date_Fin = null;
 
     public function getId(): ?int
     {
@@ -52,48 +55,60 @@ class Service
         return $this;
     }
 
-    public function getNomPropriétaire(): ?string
+    public function getProprietaire(): ?string
     {
-        return $this->NomPropriétaire;
+        return $this->Proprietaire;
     }
 
-    public function setNomPropriétaire(string $NomPropriétaire): self
+    public function setProprietaire(string $Proprietaire): self
     {
-        $this->NomPropriétaire = $NomPropriétaire;
+        $this->Proprietaire = $Proprietaire;
 
         return $this;
     }
 
-    public function getIdType(): ?int
+    public function getRole(): ?string
     {
-        return $this->id_type;
+        return $this->Role;
     }
 
-    public function setIdType(int $id_type): self
+    public function setRole(string $Role): self
     {
-        $this->id_type = $id_type;
+        $this->Role = $Role;
 
         return $this;
     }
 
-    public function getTypeService(): ?string
+    public function getIdService(): ?string
+    {
+        return $this->id_service;
+    }
+
+    public function setIdService(string $id_service): self
+    {
+        $this->id_service = $id_service;
+
+        return $this;
+    }
+
+    public function getTypeService(): ?TypeService
     {
         return $this->TypeService;
     }
 
-    public function setTypeService(string $TypeService): self
+    public function setTypeService(?TypeService $TypeService): self
     {
         $this->TypeService = $TypeService;
 
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getPrix(): ?string
     {
         return $this->prix;
     }
 
-    public function setPrix(float $prix): self
+    public function setPrix(string $prix): self
     {
         $this->prix = $prix;
 
@@ -102,24 +117,24 @@ class Service
 
     public function getDateDebut(): ?\DateTimeInterface
     {
-        return $this->DateDebut;
+        return $this->Date_Debut;
     }
 
-    public function setDateDebut(\DateTimeInterface $DateDebut): self
+    public function setDateDebut(\DateTimeInterface $Date_Debut): self
     {
-        $this->DateDebut = $DateDebut;
+        $this->Date_Debut = $Date_Debut;
 
         return $this;
     }
 
     public function getDateFin(): ?\DateTimeInterface
     {
-        return $this->DateFin;
+        return $this->Date_Fin;
     }
 
-    public function setDateFin(\DateTimeInterface $DateFin): self
+    public function setDateFin(\DateTimeInterface $Date_Fin): self
     {
-        $this->DateFin = $DateFin;
+        $this->Date_Fin = $Date_Fin;
 
         return $this;
     }
