@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CalandarDay index
+{% endblock %}
+{# oveeriding annoying header #}
+{% block header %}{% endblock %}
+
+{% block body %}
+	<h1>CalandarDay index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Date</th>
+				<th>DayStart</th>
+				<th>DayEnd</th>
+				<th>SessionDuration</th>
+				<th>LunchBreakStart</th>
+				<th>LunchBreakEnd</th>
+				{# <th>TotalTimeSlots</th> #}
+				<th>actions
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for calandar_day in calandar_days %}
+				<tr>
+					<td>{{ calandar_day.id }}
+					</td>
+					<td>{{ calandar_day.date ? calandar_day.date|date('Y-m-d') : '' }}
+					</td>
+					<td>{{ calandar_day.dayStart ? calandar_day.dayStart|date('H:i:s') : '' }}
+					</td>
+					<td>{{ calandar_day.dayEnd ? calandar_day.dayEnd|date('H:i:s') : '' }}
+					</td>
+					<td>{{ calandar_day.sessionDuration }}
+					</td>
+					<td>{{ calandar_day.lunchBreakStart ? calandar_day.lunchBreakStart|date('H:i:s') : '' }}
+					</td>
+					<td>{{ calandar_day.lunchBreakEnd ? calandar_day.lunchBreakEnd|date('H:i:s') : '' }}
+						{# </td><td>{{ calandar_day.totalTimeSlots }} #}
+					</td>
+					<td>
+						{% if user is defined %}
+							<a href="{{ path('app_calandar_day_show', {'id': calandar_day.id}) }}">
+								<button class="btn btn-success">show to book</button>
+							</a>
+						{% else %}
+							<a href="{{ path('app_calandar_day_show', {'id': calandar_day.id}) }}">
+								<button class="btn btn-success">show</button>
+							</a>
+							<a href="{{ path('app_calandar_day_edit', {'id': calandar_day.id }) }}">
+								<button class="btn btn-success">edit</button>
+							</a>
+						{% endif %}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	{# <a href="{{ path('app_calandar_day_new', { 'doctor': doctor } ) }}">Create new Calandar</a> #}
+
+	{% if user is defined %}
+		<a href="{{ path('app_user_index') }}">
+			<button class="btn btn-success">list of doctors</button>
+		</a>
+	{% else %}
+		<a href="{{ path('app_calandar_day_new', { 'doctor': doctor } ) }}">
+			<button class="btn btn-success">Create new Calendar</button>
+		</a>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CalandarDay
+{% endblock %}
+
+{# oveeriding annoying header #}
+{% block header %}{% endblock %}
+
+{% block body %}
+	<h1>Create new CalandarDay</h1>
+
+	{{ include('calandar_day/_form.html.twig') }}
+
+	<a href="{{ path('app_calandar_day_index') }}">
+		<button class="btn btn-success">back to list</button>
+	</a>
+{% endblock %}
